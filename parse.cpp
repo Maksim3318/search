@@ -22,13 +22,13 @@ vector<string_view> SplitBy(string_view s, char sep) {
     return result;
 }
 
-void LeftStrip(string_view& sv) {
+void LeftStrip(string_view &sv) {
     while (!sv.empty() && isspace(sv[0])) {
         sv.remove_prefix(1);
     }
 }
 
-string_view ReadToken(string_view& sv) {
+string_view ReadToken(string_view &sv) {
     LeftStrip(sv);
 
     auto pos = sv.find(' ');

@@ -9,10 +9,10 @@
 #include <vector>
 
 template<class T>
-std::ostream &operator<<(std::ostream &os, const std::vector<T> &s) {
+std::ostream &operator<<(std::ostream &os, const std::vector<T> &vector) {
     os << "{";
     bool first = true;
-    for (const auto &x : s) {
+    for (const auto &x : vector) {
         if (!first) {
             os << ", ";
         }
@@ -23,10 +23,10 @@ std::ostream &operator<<(std::ostream &os, const std::vector<T> &s) {
 }
 
 template<class T>
-std::ostream &operator<<(std::ostream &os, const std::set<T> &s) {
+std::ostream &operator<<(std::ostream &os, const std::set<T> &set) {
     os << "{";
     bool first = true;
-    for (const auto &x : s) {
+    for (const auto &x : set) {
         if (!first) {
             os << ", ";
         }
@@ -36,11 +36,11 @@ std::ostream &operator<<(std::ostream &os, const std::set<T> &s) {
     return os << "}";
 }
 
-template<class K, class V>
-std::ostream &operator<<(std::ostream &os, const std::map<K, V> &m) {
+template<class Key, class Value>
+std::ostream &operator<<(std::ostream &os, const std::map<Key, Value> &map) {
     os << "{";
     bool first = true;
-    for (const auto &kv : m) {
+    for (const auto &kv : map) {
         if (!first) {
             os << ", ";
         }
@@ -94,14 +94,14 @@ private:
 };
 
 #define ASSERT_EQUAL(x, y) {              \
-    std::ostringstream os;                     \
+    std::ostringstream os                 \
     os << #x << " != " << #y << ", "      \
     << __FILE__ << ":" << __LINE__;       \
     AssertEqual(x, y, os.str());          \
 }
 
 #define ASSERT(x) {                       \
-    std::ostringstream os;                     \
+    std::ostringstream os;                \
     os << #x << " is false, "             \
     << __FILE__ << ":" << __LINE__;       \
     Assert(x, os.str());                  \

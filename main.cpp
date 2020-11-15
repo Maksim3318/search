@@ -13,9 +13,9 @@
 #include <thread>
 
 void TestFunctionality(
-        const std::vector<std::string>& docs,
-        const std::vector<std::string>& queries,
-        const std::vector<std::string>& expected
+        const std::vector<std::string> &docs,
+        const std::vector<std::string> &queries,
+        const std::vector<std::string> &expected
 ) {
     std::istringstream docs_input(Join('\n', docs));
     std::istringstream queries_input(Join('\n', queries));
