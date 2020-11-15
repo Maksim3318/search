@@ -94,7 +94,7 @@ private:
 };
 
 #define ASSERT_EQUAL(x, y) {              \
-    std::ostringstream os                 \
+    std::ostringstream os;                \
     os << #x << " != " << #y << ", "      \
     << __FILE__ << ":" << __LINE__;       \
     AssertEqual(x, y, os.str());          \
