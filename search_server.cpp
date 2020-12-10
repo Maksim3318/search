@@ -2,6 +2,7 @@
 
 #include "parse.h"
 #include "iterator_range.h"
+#include "profile.h"
 
 #include <algorithm>
 #include <future>
@@ -94,12 +95,14 @@ namespace server {
     }
 
     void SearchServer::UpdateDocumentBase(istream &document_input) {
+        LogDuration log("Base open");
         async_tasks.push_back(async(UpdateIndex, ref(document_input), ref(index)));
     }
 
     void SearchServer::AddQueriesStream(
             istream &query_input, ostream &search_results_output
     ) {
+        LogDuration log("Query time");
         async_tasks.push_back(
                 async(
                         ProcessSearches, ref(query_input), ref(search_results_output), ref(index)
